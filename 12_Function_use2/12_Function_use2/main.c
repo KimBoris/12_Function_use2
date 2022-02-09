@@ -157,4 +157,97 @@ void TestFunc(int nParam)
 
 
 
-// <<
+// <<strtok>>
+// char *strtok (char *strToken, const char *Delimit);
+//strToken = 토큰화 할 문자열이 저장된 메모리 주소
+//Delimit = 토큰의 기준이 되는 구분자 문자 집합
+
+//반환값 - 두번째 인자로 전달된 문자 집합 중 하나라도 찾으면 해당문자가
+//저장된 메모리의 내용을 NULL로 바꾸고 문자열의 시작 주소를 반환한다.
+
+//임의의 문자열을 구분자를 근거로 토큰화 하는 함수
+//내부적으로 정적변수(static)를 사용하기 때문에 주의해야한다.
+
+//구분자를 기준으로 토큰화한 문자열을 화면에 출력하는데 
+//출력된 문자열들은 모두 피연산자에 해당한다. 
+//왜냐하면, 구분자 문자집합을 연산자와 화이트 스페이스로 구성했기 때문.
+
+//funcstrtok01.c
+
+//void main()
+//{
+//	//토큰화 할 대상 문자열
+//	char szBuffer[128] = { "nData = x + y;\nnResult = a * b" };
+//	//토큰화의 기준이 되는 구분자 문자열
+//	char* pszSep = "*+=\n";
+//	char* pszToken = NULL;
+//
+//	//구분자 문자열을 근거로 첫 번째 토큰화를 시도한다.
+//
+//	pszToken = strtok(szBuffer, pszSep);//strtok()함수를 호출할 때는
+//	// 첫번째 인자로 토큰화를 시작할 문자열이 저장된 메모리의 주소를 명시했다
+//	while (pszToken != NULL)
+//	{
+//		//찾은 토큰을 출력한다.
+//		puts(pszToken);
+//		//그 다음 토큰을 이어서 검색한다.
+//		pszToken = strtok(NULL, pszSep);
+//		//첫번째 인자를 NULL로 명시
+//
+//		//'토큰화' - 긴 문자열을 규칙에 따라 잘게 자르는것
+//		// '문자열 중간에 NULL을 집어넣는것'
+//		//문자열을 토큰 조각처럼 조각 조각 내는 함수
+//
+//		//ex)
+//		//"코로나19 의료진 여러분 힘내세요."  >> 띄어쓰기제외해서 strtok() > "코로나19" "의료진" "여러분" "힘내세요."
+//		//위처럼 단어만 가지고 올 수 있다.
+//
+//
+//		//ex2)
+//		//"김환자, 박대구, 이시국, 김마스크"
+//		//strtok("문자열", "구분자"(띄어쓰기+쉼표)); > 값 : 김환자  박대구  이시국  김마스크
+//		
+//
+//
+//		//문제점 - 작동원리는 strstr(), strpbrk()함수와 유사하다.
+//		//but, strtok()함수는 검색 대상 메모리에 '쓰기'를 시도(NULL삽입) 하는데다 내부적으로 정적변수를 사용하기 떄문에
+//		//멀티 스레드 환경에서 문제가 발생할 수 있다. 
+//
+//
+//	}
+//
+//
+//	//변경된 원본 문자열을 출력해본다
+//	printf("\nszBuffer : %s\n", szBuffer);
+// }
+
+
+
+//int main(void)
+//{
+// 	wchar_t wcsBuffer[12] = { L"Hello" };
+//	
+//  	return 0;
+//}
+
+
+//유틸리티 함수
+//atoi(const char *string), atol(), atof()함수
+//입력한 숫자 문자열을 각각의 자료형에 맞게 반환해준다
+//Int형, Long형, Double형으로 변환
+//void main(void)
+//{
+//	char szBuffer[32];
+//	int nResult = 0;
+//
+//
+//	printf("Input string");
+//	gets(szBuffer);
+//
+//
+//	nResult = atoi(szBuffer);
+//
+//
+//	printf("%d\n", nResult);
+//}
+//44분 57초 system()함수 부터 

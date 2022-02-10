@@ -231,6 +231,60 @@ void TestFunc(int nParam)
 //}
 
 
+
+//<wcsTombs>
+//size_t wcstombs(char* mbstr, const wchar_t *wcstr, size_t count);
+//인자 : mbstr = MBCS로 변환한 문자열을 저장할 메모리 주소
+//	     wcstr = MBCS로 변환할 유니코드 문자열이 저장된 메모리 주소
+//		 count = 변환할 문자열의 최대 크기
+
+//반환 : MBCS로 변환된 문자열의 크기
+//		만일 mbstr인수가 NULL이면 변환을 위해 필요한 메모리 길이 반환
+//설명 : 유니코드 문자열을 MBCS문자열로 변환하는 함수
+
+
+//<<mbstowcs>>
+//size_t mbstowcs(wchar_t *wcstr, const char *mbstr, size_t count);
+//인자 : wcstr - 유니코드로 변환할 문자열을 저장할 메모리 주소
+//       mbstr - 유니코드로 변환할 mbcs문자열이 저장된 메모리 주소
+//		count - 변환할 문자열의 최대 크기
+
+//반환 : 유니코드로 반환된 문자열의 길이(개수)
+//	     만일, wcstr인수가 NULL이면 변환을 위해 필요한 메모리 길이 반환
+
+//설명 : MBCS > 유니코드  변환해주는 함수
+
+
+
+
+
+
+//<<<이런 경우가 있다>>>
+/*
+ 전처리기에 이와 같이 구현한 후 아래 main식을 보았을때 
+#ifdef _UNICODE
+#define TCHAR  wchar_t
+
+#else
+#define TCHAR char
+#endif
+*/
+//int main(void)
+//{
+//	TCHAR a;
+//	printf("%d", a);
+//
+//}
+//해당 값은 아래 설정에 따라 변한다.
+/*  구성관리자 >  구성 속성 > 고급 > 문자집합 >  1. 유니코드 문자로 표현 = 2
+											  2. 멀티바이트 문자로 표현 = 1*/
+
+
+
+
+
+
+
 //유틸리티 함수
 //atoi(const char *string), atol(), atof()함수
 //입력한 숫자 문자열을 각각의 자료형에 맞게 반환해준다
@@ -250,4 +304,6 @@ void TestFunc(int nParam)
 //
 //	printf("%d\n", nResult);
 //}
-//44분 57초 system()함수 부터 
+
+
+
